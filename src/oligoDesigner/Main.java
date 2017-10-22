@@ -77,12 +77,14 @@ public class Main {
                 pw.write("\nNo split has been found. You can try again with other parameters. \n");
             }
             else {
-                pw.write("\nThe found splits are: \n");
+                pw.write("\nThe found parts are: \n");
                 int prev = 0;
-                for(int i=0; i<ans.size();i++) {
-                    pw.write("Split " + (i+1) + " at index " + ans.get(i).location + " :\n" + seq.substring(prev,ans.get(i).location)+"\n");
+                int i;
+                for(i=0; i<ans.size();i++) {
+                    pw.write("Part " + (i+1) + ", between indices " + (prev+1) + " and " + (ans.get(i).location+1) + " :\n" + seq.substring(prev,ans.get(i).location)+"\n");
                     prev = ans.get(i).location;
                 }
+                pw.write("Part " + (i+1) + ", between indices " + (prev+1) + " and " + (seq.length()) + " :\n" + seq.substring(prev,seq.length())+"\n");
             }
             pw.close();
             
